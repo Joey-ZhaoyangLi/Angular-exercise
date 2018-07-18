@@ -6,16 +6,17 @@ import { delay } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { baseURL } from '../shared/baseurl';
-
+import { ProcessHTTPMsgService } from '../services/process-httpmsg.service'
 @Injectable({
   providedIn: 'root'
 })
 export class DishService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private processHTTPMsgService: ProcessHTTPMsgService) { }
 
   getDishes(): Observable<Dish[]> {
-    return this.http.get<Dish[]>(baseURL + 'dishes');
+    return this.http.get<Dish[]>(baseURL + 'dishes')
   }
 
   getDish(id: number): Observable<Dish> {
