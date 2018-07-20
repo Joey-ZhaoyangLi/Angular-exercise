@@ -38,7 +38,9 @@ import { MatSliderModule } from '@angular/material/slider'
 import { HttpClientModule } from '@angular/common/http';
 
 import { baseURL } from './shared/baseurl';
-
+import { RestangularModule, Restangular } from 'ngx-restangular';
+import { RestangularConfigFactory } from './shared/restConfig';
+import { HighlightDirective } from './directives/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { baseURL } from './shared/baseurl';
     HomeComponent,
     ContactComponent,
     LoginComponent,
+    HighlightDirective,
   ],
   imports: [
     BrowserModule,
@@ -73,7 +76,8 @@ import { baseURL } from './shared/baseurl';
     MatProgressSpinnerModule,
     MatSliderModule,
     HttpClientModule,
-
+    RestangularModule.forRoot(RestangularConfigFactory),
+    
   ],
   entryComponents: [
     LoginComponent
